@@ -11,6 +11,7 @@ import com.horlogernet.dao.montre.MontreDao;
 import com.horlogernet.dao.newsentry.NewsEntryDao;
 import com.horlogernet.dao.reclamation.ReclamationDao;
 import com.horlogernet.dao.user.UserDao;
+import com.horlogernet.entity.Client;
 import com.horlogernet.entity.Commande;
 import com.horlogernet.entity.Montre;
 import com.horlogernet.entity.NewsEntry;
@@ -98,7 +99,13 @@ public class DataBaseInitializer
 		commande1.setStatut(Statut.enCours);
 		commande2.setStatut(Statut.finaliser);
 		commande1.setCreationDate(new Date());
+		
+		Client client1 = new Client( "anas", "Nouli", new Date(), "0613819455");
+		Client client2 = new Client( "hajar", "Nouli", new Date(), "0613819425");
+		commande1.setClient(client1);
 		commande1 = this.commandeDao.save(commande1);
+		
+		commande2.setClient(client2);
 		commande2 = this.commandeDao.save(commande2);
 		
 		

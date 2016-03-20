@@ -182,10 +182,13 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
 function CommandeController($scope, CommandeService) {
 	
 	$scope.clients = [];
+	
 	$scope.commandes = CommandeService.query(function (){
+		
 		for(var i= 0; i <  $scope.commandes.length; i++)
 		{
-		    $scope.clients.push($scope.commandes[i])
+			$scope.commandes[i].clients = [];
+		    $scope.commandes[i].clients.push($scope.commandes[i].client);
 		}
 	});
 	
