@@ -100,8 +100,8 @@ public class DataBaseInitializer
 		commande2.setStatut(Statut.finaliser);
 		commande1.setCreationDate(new Date());
 		
-		Client client1 = new Client( "anas", "Nouli", new Date(), "0613819455");
-		Client client2 = new Client( "hajar", "Nouli", new Date(), "0613819425");
+		Client client1 = new Client( "Anas", "Nouli", "0613819455");
+		Client client2 = new Client( "Hajar", "Nouli", "0613819425");
 		commande1.setClient(client1);
 		commande1 = this.commandeDao.save(commande1);
 		
