@@ -29,8 +29,6 @@ public class Client implements Entity{
 	private String firstname;
 	@Column	   
 	private String lastname;
-	@Column	   
-	private Date birthday;
 	@Column
 	private String phone;
 	@OneToMany(fetch=FetchType.EAGER)
@@ -55,18 +53,13 @@ public class Client implements Entity{
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
-	public Date getBirthday() {
-		return birthday;
-	}
 	public List<Commande> getCommandes() {
 		return commandes;
 	}
 	public void setCommandes(List<Commande> commandes) {
 		this.commandes = commandes;
 	}
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+
 	public String getPhone() {
 		return phone;
 	}
@@ -76,24 +69,22 @@ public class Client implements Entity{
 	public void addCommande(Commande c){
 		commandes.add(c);
 	}
-	public Client( String firstname, String lastname, Date birthday, String phone) {
-		super();
+	public Client(long id, String firstname, String lastname, Date birthday, String phone) {
+		super();		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.birthday = birthday;
 		this.phone = phone;
 	}
 	public Client() {
 		super();
 		this.commandes = new ArrayList<Commande>();
 	}
-	public Client(long id, String firstname, String lastname, Date birthday, String phone, List<Facture> factures,
+	public Client(long id, String firstname, String lastname, String phone, List<Facture> factures,
 			List<Commande> commandes) {
 		super();
 		this.id = id;
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.birthday = birthday;
 		this.phone = phone;
 		this.commandes = commandes;
 	}
