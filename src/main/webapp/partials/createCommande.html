@@ -1,0 +1,213 @@
+
+<div class="clearfix">
+
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content">	
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="portlet box blue" id="form_wizard_1">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i> Order <span class="step-title">
+								Step {{etape}} of 4 </span>
+							</div>					
+						</div>
+						<div class="portlet-body form">
+							<form action="#" class="form-horizontal" id="submit_form" method="POST">
+								<div class="form-wizard">
+									<div class="form-body">
+										<ul class="nav nav-pills nav-justified steps">
+											<li ng-class="(etape==1) ? 'active' : 'done' ">
+												<a href="#tab1" data-toggle="tab" class="step"  >
+												<span class="number">
+												1 </span>
+												<span class="desc">
+												<i class="fa fa-check"></i> Order Setup </span>
+												</a>
+											</li>
+											<li ng-class="(etape==2) ? 'active' : ((etape>2)? 'done' : '') ">
+												<a href="#tab2" data-toggle="tab" class="step">
+												<span class="number">
+												2 </span>
+												<span class="desc">
+												<i class="fa fa-check"></i> Client Setup </span>
+												</a>
+											</li>
+											<li ng-class="(etape==3) ? 'active' : ((etape>3)? 'done' : '') ">
+												<a href="#tab3" data-toggle="tab" class="step active">
+												<span class="number">
+												3 </span>
+												<span class="desc">
+												<i class="fa fa-check"></i> Watch Setup </span>
+												</a>
+											</li>
+											<li ng-class="(etape==4) ? 'active' : '') ">
+												<a href="#tab4" data-toggle="tab" class="step">
+												<span class="number">
+												4 </span>
+												<span class="desc">
+												<i class="fa fa-check"></i> Confirm </span>
+												</a>
+											</li>
+										</ul>
+										<div id="bar" class="progress progress-striped" role="progressbar">
+											<div class="progress-bar progress-bar-success" ng-style="{'width' : width}">
+											</div>
+										</div>
+										<div class="tab-content active">
+											<div class="alert alert-danger display-none">
+												<button class="close" data-dismiss="alert"></button>
+												You have some form errors. Please check below.
+											</div>
+											<div class="alert alert-success display-none">
+												<button class="close" data-dismiss="alert"></button>
+												Your form validation is successful!
+											</div>
+											<div class="tab-pane active" ng-show="etape == 1" id="tab1">
+												<h3 class="block">Provide your account details</h3>
+												<div class="form-group">
+													<label class="control-label col-md-3">order number<span class="required">
+													* </span>
+													</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" ng-model="commande.number" name="number"/>
+														<span class="help-block">
+														Provide your order number </span>
+													</div>
+												</div>										
+												
+											
+											</div>
+											<div class="tab-pane active" ng-show="etape == 2"  id="tab2">
+												<h3 class="block">Provide your client details</h3>
+												<div class="form-group">
+													<label class="control-label col-md-3">Firstname <span class="required">
+													* </span>
+													</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" ng-model="client.firstname"  name="firstname"/>
+														<span class="help-block">
+														Provide your client firstname </span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-md-3">lastname <span class="required">
+													* </span>
+													</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" ng-model="client.lastname" name="lastname"/>
+														<span class="help-block">
+														Provide your client lastname </span>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-md-3">Phone Number <span class="required">
+													* </span>
+													</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" ng-model="client.phone" name="phone"/>
+														<span class="help-block">
+														Provide your client phone number </span>
+													</div>
+												</div>																					
+											
+											</div>
+											<div class="tab-pane active" ng-show="etape == 3" id="tab3">
+												<h3 class="block">Provide  watches details</h3>
+																							
+													<a class="btn btn-default" ng-click="ajouterMontre()"
+															title="Add"><span class="fa fa-plus"></span></a> 
+														<a class="btn btn-default" ng-click="subMontre()" title="Sub">
+														<span class="fa fa-minus"></span></a>
+												<div class="form-group" ng-repeat="montre in montres">
+													<label class="control-label col-md-3">Information <span class="required">
+													* </span>
+													</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" ng-model="montre.information" name="information"/>
+														<span class="help-block">
+														watch details
+														</span>
+													</div>
+												</div>
+												
+												
+											</div>
+											<div class="tab-pane active" ng-show="etape == 4" id="tab4">
+												<h3 class="block">Confirm </h3>
+												<h4 class="form-section">Order</h4>
+												<div class="form-group">
+													<label class="control-label col-md-3">order number:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="number">
+														{{commande.number}}
+														</p>
+													</div>
+												</div>
+												
+												<h4 class="form-section">Client</h4>
+												<div class="form-group">
+													<label class="control-label col-md-3">Firstname:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="firstname">
+														{{client.firstname}}
+														</p>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-md-3">Lastname:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="lastname">
+														{{client.lastname}}
+														</p>
+													</div>
+												</div>												
+												<div class="form-group">
+													<label class="control-label col-md-3">Phone:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="phone">
+														{{client.phone}}
+														</p>
+													</div>
+												</div>												
+												<h4 class="form-section">Watchs</h4>
+												<div class="form-group"  ng-repeat="montre in montres">
+													<label class="control-label col-md-3">Information :</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="information">
+														{{montre.information}}</p>
+													</div>
+												</div>												
+											</div>
+										</div>
+									</div>
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<a href="javascript:;" ng-hide="etape == 1"  ng-click="back()"  class="btn default button-previous">
+												<i class="m-icon-swapleft"></i> Back </a>
+												<a href="javascript:;" ng-hide="etape == 4" ng-click="continue()" class="btn blue button-next">
+												Continue <i class="m-icon-swapright m-icon-white"></i>
+												</a>
+												<a href="javascript:;" ng-hide="etape != 4" class="btn green button-submit" ng-click="save()">
+												Submit <i class="m-icon-swapright m-icon-white"></i>
+												</a>												
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+</div>	
