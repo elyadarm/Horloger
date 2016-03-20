@@ -11,7 +11,7 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 				templateUrl: 'partials/edit.html',
 				controller: EditController
 			});
-
+			
 			$routeProvider.when('/login', {
 				templateUrl: 'partials/login.html',
 				controller: LoginController

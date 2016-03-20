@@ -14,7 +14,6 @@ public class Reclamation implements Entity{
 	private long id;
 	@Column
     private String reclamation;
-	private Date dateCreation;
 	@OneToOne
 	private Commande commande;
 	@OneToOne

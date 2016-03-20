@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.codehaus.jackson.map.annotate.JsonView;
 
@@ -39,10 +40,21 @@ public class Commande implements Entity{
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Client client;
-	
+	@OneToOne
+	private Facture facture;
+	@OneToOne
+	private Reclamation reclamation;
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Montre> montres;
 	
+	public Reclamation getReclamation() {
+		return reclamation;
+	}
+
+	public void setReclamation(Reclamation reclamation) {
+		this.reclamation = reclamation;
+	}
+
 	public Client getClient() {
 		return client;
 	}
@@ -52,6 +64,19 @@ public class Commande implements Entity{
 	}
 
 
+
+	public Facture getFacture() {
+		return facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
+		
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
 
 	public void setMontres(List<Montre> montres) {
 		this.montres = montres;
@@ -101,13 +126,13 @@ public class Commande implements Entity{
 		super();
 		this.montres = new ArrayList<Montre>();
 	}
-	public Commande(long id, String number, Date creationDate, Statut statut, Client client, List<Montre> montres) {
+	public Commande(String number, Date creationDate, Statut statut, Client client, List<Montre> montres) {
 		super();
-		this.id = id;
 		this.number = number;
 		this.creationDate = creationDate;
 		this.statut = statut;
 		this.client = client;
 		this.montres = montres;
 	}
+	
 }
