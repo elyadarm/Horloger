@@ -16,7 +16,9 @@
 	
 	<p>{{commande.statut}}</p>
 	
-		<p ng-show="">{{clients[$index].firstname}} , {{clients[$index].lastname}}</p>
+	<div ng-repeat="client in commande.clients">
+		{{client.firstname}} , {{client.lastname}}
+	</div>
 	
 	<div ng-repeat="montre in commande.montres">
 	<p>{{montre.information}}</p>

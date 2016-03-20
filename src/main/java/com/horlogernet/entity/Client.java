@@ -69,9 +69,8 @@ public class Client implements Entity{
 	public void addCommande(Commande c){
 		commandes.add(c);
 	}
-	public Client(long id, String firstname, String lastname, String phone) {
-		super();
-		this.id = id;
+	public Client(String firstname, String lastname, String phone) {
+		super();	
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.phone = phone;
