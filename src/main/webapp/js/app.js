@@ -18,8 +18,8 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 			});
 			
 			$routeProvider.otherwise({
-				templateUrl: 'partials/index.html',
-				controller: IndexController
+				templateUrl: 'partials/commande.html',
+				controller: CommandeController
 			});
 			
 			$routeProvider.when('/commande', {
