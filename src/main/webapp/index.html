@@ -27,35 +27,38 @@
 	<div class="loader" ng-hide="initialized">
 		Loading...
 	</div>
-
-	<nav class="navbar navbar-fixed-top navbar-default ng-hide" role="navigation" ng-show="initialized">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse"
-					data-target="#navbar-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<a href="#!/"><span class="icon-bar">Home</span></a> 
-					<a href="#!/commande"><span class="icon-bar">Commande</span></a> 
-					<a href="#!/facture" ><span class="icon-bar">Facture</span></a>
-					<a href="#!/reclamation"><span class="icon-bar">Reclamation</span></a>
-				</button>
-				<a class="navbar-brand" href="#">Image</a>
-			</div>
-
-			<div class="collapse navbar-collapse">
-				<ul class="nav navbar-nav">
-					<li><a href="#!/">Home</a></li>
-				</ul>
-				<ul class="nav navbar-nav">
-					<li><a href="#!/commande">Commande</a></li>
-				</ul>
-				<ul class="nav navbar-nav">
-					<li><a href="#!/facture">Facture</a></li>
-				</ul>
-				<ul class="nav navbar-nav">
-					<li><a href="#!/reclamation">Reclamation</a></li>
-				</ul>
-				<ul class="nav navbar-nav navbar-right">
+	<div>
+	  <nav role="navigation" class="navbar navbar-default" ng-hide" role="navigation" ng-show="initialized">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>         
+             <a href="#" class="pull-left">
+        	<img style="max-width:60px; margin-top: -7px;"
+             src="/img/horloge1.png">
+   			 </a>
+        </div>
+        <!-- Collection of nav links, forms, and other content for toggling -->
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="#">Home</a></li>
+               
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">Orders <b class="caret"></b></a>
+                    <ul role="menu" class="dropdown-menu">
+                        <li><a  href="#!/commande">List</a></li>
+                        <li class="divider"></li>
+                       <li><a href="#!/commande/create">Add</a></li>
+                    </ul>
+                </li>
+               	<li><a href="#!/facture">bills</a></li>
+                <li><a href="#!/reclamation">complaints</a></li>
+            </ul>           
+           <ul class="nav navbar-nav navbar-right">
 
 					<li class="dropdown" ng-show="user">
 						<a href="" class="dropdown-toggle" data-toggle="dropdown">{{user.name}} {{user.id}} <b class="caret"></b></a>
@@ -63,11 +66,10 @@
 							<li><a href="" ng-click="logout()"><span class="fa fa-sign-out"></span> Logout</a></li>
 						</ul>
 					</li>
-				</ul>
-			</div>
-		</div>
-	</nav>
-
+			</ul>
+        </div>
+    </nav>
+	</div>
 	<div class="container ng-hide" ng-show="initialized">
 		<div class="alert alert-danger" ng-show="error">{{error}}</div>
 		<div></br></br></br></div>

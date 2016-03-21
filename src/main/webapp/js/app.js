@@ -38,6 +38,10 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 				templateUrl: 'partials/reclamation.html',
 				controller: CommandeController
 			});
+			$routeProvider.when('/facture', {
+				templateUrl: 'partials/facture.html',
+				controller: CommandeController
+			});
 			
 			$locationProvider.hashPrefix('!');
 			
@@ -188,21 +192,38 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
 	};
 };
 
-function CommandeController($scope, CommandeService) {
+function CommandeController($scope, CommandeService, SearchCommandeService) {
 	
 	$scope.clients = [];
 	$scope.reclamations = [];
+	$scope.factures = [];
 	$scope.commandes = CommandeService.query(function (){
 		
 		for(var i= 0; i <  $scope.commandes.length; i++)
 		{
 			$scope.commandes[i].clients = [];
 			$scope.commandes[i].reclamations = [];
+			$scope.commandes[i].factures = [];
 		    $scope.commandes[i].clients.push($scope.commandes[i].client);
-		   
+		    $scope.commandes[i].factures.push($scope.commandes[i].facture);
 		    $scope.commandes[i].reclamations.push($scope.commandes[i].reclamation);
 		}
 	});
+	
+	$scope.search = function() {
+		if($scope.number){
+		SearchCommandeService.search($.param({number: $scope.number}), function(commande) {
+
+		$scope.commandes = [];
+		if(commande && commande.number){
+		$scope.commandes.push(commande);
+		}
+
+		});
+		}else{
+		window.alert('veuillez saisir un numero ');
+		}
+		};
 	
 
 	$scope.deleteCommande = function(commande) {
@@ -284,7 +305,18 @@ services.factory('NewsService', function($resource) {
 	return $resource('rest/news/:id', {id: '@id'});
 });
 
-
+services.factory('SearchCommandeService', function($resource) {
+	
+	return $resource('rest/commande/:action', {},
+			{
+				search: {
+					method: 'POST',
+					params: {'action' : 'search'},
+					headers : {'Content-Type': 'application/x-www-form-urlencoded'}
+				},
+			}
+		);
+});
 
 services.factory('CommandeService', function($resource) {
 	

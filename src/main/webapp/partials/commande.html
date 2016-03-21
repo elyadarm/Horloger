@@ -1,11 +1,24 @@
-<div class="pull-right">
-	<a href="#!/commande/create" class="btn btn-default" ng-show="hasRole('admin')" title="Create"><span class="fa fa-plus"></span></a>
-</div>
+
+
 <div class="page-header">
 	<h3>Liste des commandes :</h3>
-</div>
 
-<div ng-repeat="commande in commandes">
+</div>
+	<div class="pull-right">	
+	<div class="input-group">
+		<input id="number" ng-model="number" type="text" class="form-control" placeholder="Order number"  style="width:200px; height:35px;"/>
+		<a  class="btn btn-default" ng-click="search()" title="Search"><span class="fa fa-search"></span></a>
+		<span class="input-group-addon">		
+		<a href="#!/commande/create" class="btn btn-default" ng-show="hasRole('admin')" title="Create"><span class="fa fa-plus"></span></a>
+		</span>
+	</div>
+</div>
+<div ng-show="!commandes.length"> 
+<p>
+No order found.<a href="#" " title="order list"><span class="fa fa-refresh"></span></a></p>
+</div>
+<div ng-show="commandes.length">
+<div  ng-repeat="commande in commandes">
 	<hr />
 	<div class="pull-right">
 		<a href="" ng-click="deleteCommande(commande)" class="btn btn-xs btn-default" ng-show="hasRole('admin')" title="delete"><span class="fa fa-trash-o"></span></a>
@@ -31,5 +44,6 @@
 		</div>
 		
 	</div>	
+</div>
 </div>
 <hr />

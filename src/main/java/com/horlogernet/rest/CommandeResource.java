@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -77,6 +78,19 @@ public class CommandeResource
 			throw new WebApplicationException(404);
 		}
 		return commande;
+	}
+	
+	@POST
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/search")
+	public Commande read(@FormParam("number") String number)
+	{
+
+		List<Commande> commandes = this.commandeDao.search(number);
+		if (commandes != null && commandes.size()>0) {
+			return commandes.get(0);
+		}
+		return null;
 	}
 
 

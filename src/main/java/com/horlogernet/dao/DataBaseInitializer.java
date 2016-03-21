@@ -107,7 +107,7 @@ public class DataBaseInitializer
 		commande1.setCreationDate(new Date());
 		
 		Client client1 = new Client( "Anas", "Nouli", "0613819455");
-		Client client2 = new Client( "Hajar", "Nouli", "0613819425");
+		Client client2 = new Client( "Hajar", "El Baggar", "0613819425");
 		commande1.setClient(client1);
 		
 		commande1 = this.commandeDao.save(commande1);
@@ -116,7 +116,7 @@ public class DataBaseInitializer
 		commande2.setFacture(facture2);
 		commande2.setClient(client2);
 		Reclamation reclmation0 = new Reclamation();
-		reclmation0.setReclamation("3 days after the rework, my watch strat to have too much ptoblems");
+		reclmation0.setReclamation("The third day after i got my watch back, it stopped working and had too many problems ");
 		commande2.setReclamation(reclmation0);
 		commande2 = this.commandeDao.save(commande2);
 		
