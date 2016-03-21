@@ -17,15 +17,19 @@
 	<p ng-class="(commande.statut=='finaliser') ? 'green' : 'red'"> Statut : {{commande.statut}}</p>
 	<a href="javascript:;"  ng-click="commande.mySwitch = !commande.mySwitch">
 												 details </a>
-	<div ng-show="commande.mySwitch">										
-	<div ng-repeat="client in commande.clients">
-		Client : {{client.firstname}} , {{client.lastname}}
-	</div>
-	</br>
-	<p>Watches Informations :</p>
-	<div ng-repeat="montre in commande.montres">
-	<p>{{montre.information}}</p>
-	</div>
+	<div class="client"  ng-show="commande.mySwitch">										
+		<div  ng-repeat="client in commande.clients">
+			<p><i class="fa fa-user"> </i> customer infaromations :</p>
+			<p>Firstname : {{client.firstname}}</p>
+			<p>LastName : {{client.lastname}}</p>
+			<p>Phone : {{client.phone}}</p>
+		</div>
+		</br>
+		<p>Watches Informations :</p>
+		<div ng-repeat="montre in commande.montres">
+					<p>{{montre.information}}</p>
+		</div>
+		
 	</div>	
 </div>
 <hr />

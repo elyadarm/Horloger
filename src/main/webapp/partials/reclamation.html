@@ -1,0 +1,32 @@
+
+<div class="page-header">
+	<h3>CLAIMS List:</h3>
+</div>
+
+<div ng-repeat="commande in commandes" >
+	<div ng-if="commande.reclamation != null">
+	
+
+	<h1><br>{{commande.number}}</br></h1>
+	<div  ng-repeat="reclamation in commande.reclamations">
+	<p>{{reclamation.reclamation}}</p>
+	</div>
+	<a href="javascript:;"  ng-click="commande.mySwitch = !commande.mySwitch">
+												 details </a>
+	<div class="client"  ng-show="commande.mySwitch">										
+		<div  ng-repeat="client in commande.clients">
+			<p><i class="fa fa-user"> </i> customer infaromations :</p>
+			<p>Firstname : {{client.firstname}}</p>
+			<p>LastName : {{client.lastname}}</p>
+			<p>Phone : {{client.phone}}</p>
+		</div>
+		</br>
+		<p>Watches Informations :</p>
+		<div ng-repeat="montre in commande.montres">
+					<p>{{montre.information}}</p>
+		</div>
+		
+	</div>
+	</div>	
+</div>
+<hr />

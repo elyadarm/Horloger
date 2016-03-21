@@ -18,8 +18,8 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 			});
 			
 			$routeProvider.otherwise({
-				templateUrl: 'partials/index.html',
-				controller: IndexController
+				templateUrl: 'partials/commande.html',
+				controller: CommandeController
 			});
 			
 			$routeProvider.when('/commande', {
@@ -33,6 +33,10 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 			$routeProvider.when('/commande/create', {
 				templateUrl: 'partials/createCommande.html',
 				controller: CreateCommandeController
+			});
+			$routeProvider.when('/reclamation', {
+				templateUrl: 'partials/reclamation.html',
+				controller: CommandeController
 			});
 			
 			$locationProvider.hashPrefix('!');
@@ -187,13 +191,16 @@ function LoginController($scope, $rootScope, $location, $cookieStore, UserServic
 function CommandeController($scope, CommandeService) {
 	
 	$scope.clients = [];
-	
+	$scope.reclamations = [];
 	$scope.commandes = CommandeService.query(function (){
 		
 		for(var i= 0; i <  $scope.commandes.length; i++)
 		{
 			$scope.commandes[i].clients = [];
+			$scope.commandes[i].reclamations = [];
 		    $scope.commandes[i].clients.push($scope.commandes[i].client);
+		   
+		    $scope.commandes[i].reclamations.push($scope.commandes[i].reclamation);
 		}
 	});
 	
@@ -208,6 +215,7 @@ function EditCommandeController($scope, $routeParams, $location, CommandeService
 
 	$scope.commande = CommandeService.get({id: $routeParams.id},function (){
 		$scope.client = $scope.commande.client;
+
 		$scope.montres = $scope.commande.montres;
 		$scope.facture = $scope.commande.facture;
 	});

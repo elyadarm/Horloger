@@ -17,6 +17,7 @@ import com.horlogernet.entity.Etat;
 import com.horlogernet.entity.Facture;
 import com.horlogernet.entity.Montre;
 import com.horlogernet.entity.NewsEntry;
+import com.horlogernet.entity.Reclamation;
 import com.horlogernet.entity.Statut;
 import com.horlogernet.entity.User;
 
@@ -81,6 +82,8 @@ public class DataBaseInitializer
 			this.newsEntryDao.save(newsEntry);
 			timestamp += 1000 * 60 * 60;
 		}
+		
+		
 		Montre montre0 = new Montre(Statut.enAttente,"Montre Fossil Men Dress Fs4778");
 		Montre montre1 = new Montre(Statut.enAttente,"Montre Chronographe Luigi Ar1811");
 		Montre montre2 = new Montre(Statut.enAttente,"Montre Chronographe Overflow Dz4341");
@@ -91,9 +94,10 @@ public class DataBaseInitializer
 		montre3 = this.montreDao.save(montre3);
 		Commande commande1 =new Commande();
 		Commande commande2 = new Commande();
+		
 		commande1.setNumber("123A");
 		commande2.setNumber("185T");
-		commande1.addMontre(montre0);
+		commande1.addMontre(montre0);		
 //		montre0.setCommande(commande1
 		commande1.addMontre(montre1);
 		commande1.addMontre(montre2);
@@ -111,6 +115,9 @@ public class DataBaseInitializer
 		Facture facture2 = new Facture("3423423S", 600, Etat.payée);
 		commande2.setFacture(facture2);
 		commande2.setClient(client2);
+		Reclamation reclmation0 = new Reclamation();
+		reclmation0.setReclamation("3 days after the rework, my watch strat to have too much ptoblems");
+		commande2.setReclamation(reclmation0);
 		commande2 = this.commandeDao.save(commande2);
 		
 		
