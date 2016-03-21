@@ -13,6 +13,8 @@ import com.horlogernet.dao.reclamation.ReclamationDao;
 import com.horlogernet.dao.user.UserDao;
 import com.horlogernet.entity.Client;
 import com.horlogernet.entity.Commande;
+import com.horlogernet.entity.Etat;
+import com.horlogernet.entity.Facture;
 import com.horlogernet.entity.Montre;
 import com.horlogernet.entity.NewsEntry;
 import com.horlogernet.entity.Statut;
@@ -103,8 +105,11 @@ public class DataBaseInitializer
 		Client client1 = new Client( "Anas", "Nouli", "0613819455");
 		Client client2 = new Client( "Hajar", "Nouli", "0613819425");
 		commande1.setClient(client1);
+		
 		commande1 = this.commandeDao.save(commande1);
 		
+		Facture facture2 = new Facture("3423423S", 600, Etat.payée);
+		commande2.setFacture(facture2);
 		commande2.setClient(client2);
 		commande2 = this.commandeDao.save(commande2);
 		

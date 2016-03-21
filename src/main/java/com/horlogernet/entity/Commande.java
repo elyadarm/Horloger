@@ -40,10 +40,13 @@ public class Commande implements Entity{
 	
 	@ManyToOne(cascade=CascadeType.ALL)
 	private Client client;
-	@OneToOne
+	
+	@OneToOne(cascade=CascadeType.ALL)
 	private Facture facture;
-	@OneToOne
+	
+	@OneToOne(cascade=CascadeType.ALL)
 	private Reclamation reclamation;
+	
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Montre> montres;
 	
@@ -64,15 +67,6 @@ public class Commande implements Entity{
 	}
 
 
-
-	public Facture getFacture() {
-		return facture;
-	}
-
-	public void setFacture(Facture facture) {
-		this.facture = facture;
-		
-	}
 
 	public void setId(long id) {
 		this.id = id;
@@ -122,11 +116,21 @@ public class Commande implements Entity{
 	public void addMontre(Montre m){
 		montres.add(m);
 	}
+	
+	public Facture getFacture() {
+		return facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
+	}
+
 	public Commande() {
 		super();
 		this.montres = new ArrayList<Montre>();
 	}
 	public Commande(String number, Date creationDate, Statut statut, Client client, List<Montre> montres) {
+	
 		super();
 		this.number = number;
 		this.creationDate = creationDate;
