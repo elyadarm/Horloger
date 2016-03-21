@@ -100,6 +100,9 @@ public class CommandeResource
 	{
 		this.logger.info("update(): " + commande);
 
+		if(commande.getFacture() != null){
+			commande.setStatut(Statut.finaliser);
+		}
 		return this.commandeDao.save(commande);
 	}
 

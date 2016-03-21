@@ -101,6 +101,11 @@ angular.module('exampleApp', ['ngRoute', 'ngCookies', 'exampleApp.services'])
 			return $rootScope.user.roles[role];
 		};
 		
+		$rootScope.statut = {};
+		$rootScope.statut.enAttente = 'enAttente';
+		$rootScope.statut.enCours = 'enCours';
+		$rootScope.statut.finaliser = 'finaliser';
+		
 		$rootScope.logout = function() {
 			delete $rootScope.user;
 			delete $rootScope.authToken;
@@ -201,9 +206,19 @@ function CommandeController($scope, CommandeService) {
 };
 function EditCommandeController($scope, $routeParams, $location, CommandeService) {
 
-	$scope.commande = CommandeService.get({id: $routeParams.id});
+	$scope.commande = CommandeService.get({id: $routeParams.id},function (){
+		$scope.client = $scope.commande.client;
+		$scope.montres = $scope.commande.montres;
+		$scope.facture = $scope.commande.facture;
+	});
+	
+	$scope.addFacture = function (){
+		$scope.showFacture = true;
+		
+	}
 	
 	$scope.save = function() {
+		$scope.commande.facture = $scope.facture;
 		$scope.commande.$save(function() {
 			$location.path('/commande');
 		});

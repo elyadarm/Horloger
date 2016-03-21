@@ -1,17 +1,183 @@
-<div class="page-header">
-	<h3>Edit Commande</h3>
+
+<div class="clearfix">
+
 </div>
 
-<form class="form-horizontal">
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="content">number</label>
-		<div class="col-sm-10">
-			<input type="text" ng-model="commande.number" id="number" class="form-control"/>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-sm-10 col-sm-offset-2">
-			<button type="submit" class="btn btn-primary" ng-click="save()"><span class="fa fa-check"></span> Save</button>
-		</div>
-	</div>
-</form>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="portlet box blue" id="form_wizard_1">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i> Consult Commande 
+							</div>					
+						</div>
+						<div class="portlet-body form">
+							<form action="#" class="form-horizontal" id="submit_form" method="POST">
+								<div class="form-wizard">
+									<div class="form-body">
+										
+										<div class="tab-content active">
+											<div class="tab-pane active"  id="tab4">
+												<h4 class="form-section">Commande</h4>
+												<div class="form-group">
+													<label class="control-label col-md-3">order number:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="number">
+														{{commande.number}}
+														</p>
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="control-label col-md-3">order number:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="number">
+														{{commande.number}}
+														</p>
+													</div>
+												</div>
+												
+												<h4 class="form-section">Client</h4>
+												<div class="form-group">
+													<label class="control-label col-md-3">Firstname:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="firstname">
+														{{client.firstname}}
+														</p>
+													</div>
+												</div>
+												<div class="form-group">
+													<label class="control-label col-md-3">Lastname:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="lastname">
+														{{client.lastname}}
+														</p>
+													</div>
+												</div>												
+												<div class="form-group">
+													<label class="control-label col-md-3">Phone:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="phone">
+														{{client.phone}}
+														</p>
+													</div>
+												</div>												
+												<h4 class="form-section">Watchs</h4>
+												<div class="form-group"  ng-repeat="montre in montres">
+													<label class="control-label col-md-3">Information :</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="information">
+														{{montre.information}} : {{montre.statut}}</p>
+													</div>
+												</div>												
+											</div>
+										</div>
+									</div>
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<a href="javascript:;" ng-hide="commande.statut == statut.finaliser" class="btn green button-submit" ng-click="addFacture()">
+												Ajouter Facture <i class="m-icon-swapright m-icon-white"></i>
+												</a>												
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+	
+<div class="row" ng-show="showFacture">
+				<div class="col-md-12">
+					<div class="portlet box blue" id="form_wizard_1">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i> Create Facture 
+							</div>					
+						</div>
+						<div class="portlet-body form">
+							<form action="#" class="form-horizontal" id="submit_form" method="POST">
+								<div class="form-wizard">
+									<div class="form-body">
+										
+										<div class="tab-content active">
+											<div class="tab-pane active"  id="tab4">
+												<h4 class="form-section">Facture</h4>
+												<div class="form-group">
+													<label class="control-label col-md-3">order number:</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" ng-model="facture.number" name="lastname"/>
+
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="control-label col-md-3">facture total:</label>
+													<div class="col-md-4">
+														<input type="text" class="form-control" ng-model="facture.price" name="lastname"/>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="form-actions">
+										<div class="row">
+											<div class="col-md-offset-3 col-md-9">
+												<a href="javascript:;"  class="btn green button-submit" ng-click="save()">
+												Submit <i class="m-icon-swapright m-icon-white"></i>
+												</a>												
+											</div>
+										</div>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END PAGE CONTENT-->
+	
+<div class="row" ng-show="commande.statut == statut.finaliser">
+				<div class="col-md-12">
+					<div class="portlet box blue" id="form_wizard_1">
+						<div class="portlet-title">
+							<div class="caption">
+								<i class="fa fa-gift"></i> Facture 
+							</div>					
+						</div>
+						<div class="portlet-body form">
+							<form action="#" class="form-horizontal" id="submit_form" method="POST">
+								<div class="form-wizard">
+									<div class="form-body">
+										
+										<div class="tab-content active">
+											<div class="tab-pane active"  id="tab4">
+												<div class="form-group">
+													<label class="control-label col-md-3">facture number:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="information">
+														{{facture.number}}</p>
+													</div>
+												</div>
+												
+												<div class="form-group">
+													<label class="control-label col-md-3">facture total:</label>
+													<div class="col-md-4">
+														<p class="form-control-static" data-display="information">
+														{{facture.price}}</p>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>

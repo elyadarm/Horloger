@@ -43,6 +43,9 @@ public class Commande implements Entity{
 	@OneToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private List<Montre> montres;
 	
+	@ManyToOne(cascade=CascadeType.ALL)
+	private Facture facture;
+	
 	public Client getClient() {
 		return client;
 	}
@@ -97,10 +100,20 @@ public class Commande implements Entity{
 	public void addMontre(Montre m){
 		montres.add(m);
 	}
+	
+	public Facture getFacture() {
+		return facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
+	}
+
 	public Commande() {
 		super();
 		this.montres = new ArrayList<Montre>();
 	}
+	
 	public Commande(long id, String number, Date creationDate, Statut statut, Client client, List<Montre> montres) {
 		super();
 		this.id = id;
